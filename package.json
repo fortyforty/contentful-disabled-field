@@ -1,0 +1,7 @@
+{
+  "name": "contentful-disabled-field",
+  "version": "1.0.0",
+  "main": "app.html",
+  "author": "Antoine Girard <thetoine@mill3.studio>",
+  "license": "MIT"
+}

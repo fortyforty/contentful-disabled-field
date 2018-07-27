@@ -1,0 +1,7 @@
+
+{
+  "id": "contentful-disabled-field",
+  "name": "Longform disabled field",
+  "srcdoc": "./app.html",
+  "fieldTypes": ["Symbol"]
+}

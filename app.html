@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Longform Disabled field Widget</title>
+    <!--
+    Include styles from the Contentful app.
+
+    See http://contentful.github.io/ui-extensions-sdk/styleguide for information on
+    how to include and apply these styles.
+     -->
+    <link rel="stylesheet" href="https://contentful.github.io/ui-extensions-sdk/cf-extension.css">
+    <style>
+
+      body { margin: 0; }
+
+    </style>
+
+    <!--
+    Load the Extensions API that is used to communicate with the containing app.
+    -->
+    <script src="https://contentful.github.io/ui-extensions-sdk/cf-extension-api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  </head>
+  <body>
+
+    <script>
+
+      // This is the main entry point for extensions.
+      //
+      // The extension API reference explains in detail what you can do with
+      // the 'api' object.
+      var cfExt = window.contentfulExtension || window.contentfulWidget
+      cfExt.init(function (api) {
+
+        // Whenever the size of this document changes we adjust the size of
+        // the IFrame in the Contentful App.
+        api.window.startAutoResizer()
+
+        var metaData = api.entry.getSys()
+        var field = api.field;
+        var value = field.getValue();
+
+        // set field disabled
+        //field.disabled = true;
+
+        // console.log(field.getValue());
+
+        //disabled-field
+        $('#current-layout').text(value);
+
+        field.onValueChanged(function() {
+          console.log('changed...', field.getValue(), $('#current-layout'));
+          $('#current-layout').empty().text(field.getValue());
+        });
+
+        // $(field).on('change', function() {
+        //   // var value = field.getValue();
+        //   $('#current-layout').html(field.getValue());
+        // });
+
+      })
+
+    </script>
+
+    <!-- this will hold field value as text -->
+    <p id="current-layout"></p>
+
+  </body>
+</html>
